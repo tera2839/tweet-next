@@ -22,6 +22,8 @@ export default function CreateAccount() {
     const [modal, setModal] = useState<ModalState>({isOpen: false, isSuccess: false});
     const [message, setMessage] = useState("");
     const [form, setForm] = useState<User[]>([]);
+    const [valMail,setValMail] = useState("");
+    const [valPass,setValPass] = useState("");
 
     const handleAdd = async (e: React.FormEvent) => {
       e.preventDefault();
@@ -42,6 +44,26 @@ export default function CreateAccount() {
       setModal({isOpen: false, isSuccess: false})
     }
 
+    const validationCheckMail = (e: React.ChangeEvent<HTMLInputElement>) => {
+      e.preventDefault();
+      setMail(e.target.value);
+      if(!e.target.value.match("@")) {
+        setValMail("有効なメールアドレスを入力してください")
+      } else {
+        setValMail("");
+      }
+    }
+
+    const validationCheckPass = (e: React.ChangeEvent<HTMLInputElement>) => {
+      e.preventDefault();
+      setPass(e.target.value);
+      if(e.target.value.length < 7) {
+        setValPass("パスワードは7文字以上で入力してください");
+      } else {
+        setValPass("");
+      }
+    }
+
     return (
     <div className="w-full h-full bg-amber-50 m-0 p-0 pt-50 ">
       <div className="w-110 h-14 mx-auto flex justify-center">
@@ -51,9 +73,11 @@ export default function CreateAccount() {
       <form className="border-3 w-100 h-110 mx-auto text-center rounded-2xl border-orange-100 bg-orange-50 shadow-md py-5">
         <h2 className="w-1/2 h-6 mx-auto  my-5 text-2xl" >アカウント作成</h2>
         <p className="mt-8">メールアドレス</p>
-        <input type="text" name="mail" placeholder="メールアドレス" className="bg-white border-b-2 rounded-b-sm" value={mail} onChange={(e) => setMail(e.target.value)} />
+        <input type="text" name="mail" placeholder="メールアドレス" className="bg-white border-b-2 rounded-b-sm" value={mail} onChange={validationCheckMail} />
+        <p className="text-red-500 text-sm">{valMail}</p>
         <p className="mt-8">パスワード</p>
-        <input type="text" name="pass" placeholder="パスワード"  className="bg-white border-b-2 rounded-b-sm" value={pass} onChange={(e) => setPass(e.target.value)} /><br />
+        <input type="text" name="pass" placeholder="パスワード"  className="bg-white border-b-2 rounded-b-sm" value={pass} onChange={validationCheckPass} /><br />
+        <p className="text-red-500 text-sm">{valPass}</p>
         <div className="h-20 w-full">
             <button onClick={handleAdd} type="submit" className="mt-8 bg-amber-200 w-40 h10 rounded-2xl shadow-md border-2 border-gray-600 cursor-pointer inversion-login-color">作成</button>
         </div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import { loginUser } from "../lib/api";
@@ -16,6 +16,8 @@ export default function Home() {
 
     if(error) {
       setMessage("アカウント名またはパスワードが間違っています。");
+      console.log(error);
+      
     } else {
       window.location.href = "/home";
     }
