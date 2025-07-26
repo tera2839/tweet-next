@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <div className="w-full h-full bg-amber-50 m-0 p-0 pt-50">
       <div className="w-110 h-14 mx-auto flex justify-center">
-        <h1 className="text-center text-4xl">Tweets</h1>
+        <h1 className="text-center text-4xl">Octn</h1>
         <ClearAllIcon sx={{fontSize: '48px'}}/>
       </div>
       <form className="border-3 w-100 h-110 mx-auto text-center rounded-2xl border-orange-100 bg-orange-50 shadow-md py-5" onSubmit={handleLogin}>

@@ -13,3 +13,12 @@ export async function loginUser(mail: string, pass: string) {
 
     return {error};
 }
+
+export async function createProps(name: string, price:number,seller: string) {
+    return await supabase.from("props").insert([{id: uuid(), name, price,seller}]);
+}
+
+export async function getReceipt() {
+  
+}
+

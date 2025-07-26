@@ -9,7 +9,7 @@ export default function Sidebar() {
         <div className='w-[16%] h-full p-4 text-gray-100 z-10 rounded-sm'
         style={{ borderTop: "5px solid rgba(150,150,0,0.9)",borderRight: "5px solid rgba(150,150,0,0.9)", background: "rgba(130,130,0,0.8)"}}>
             <div className='flex'>
-                <h2 className='text-2xl'>Tweets</h2>
+                <h2 className='text-2xl'>Octn</h2>
                 <ClearAllIcon className='mt-0.2' sx={{fontSize: '34px'}}/>
             </div>
             <ul>
